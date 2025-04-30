@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { LoginApi } from '../api/AuthApi'
+import LinkSphereLogo from '../assets/linksphereLogo.png'
 import '../Sass/LoginComponent.scss'
 
 export default function LoginComponent() {
@@ -13,7 +14,7 @@ export default function LoginComponent() {
     const login = async () => {
         try {         
             let res = await LoginApi(credentials.email, credentials.password)
-            console.log('res', res)
+            console.log(res.user)
         } catch (err) {
             console.log('err:', err)
         }
@@ -21,6 +22,7 @@ export default function LoginComponent() {
 
     return (
         <div className="login-wrapper">
+            <img src={LinkSphereLogo} className='linkspherelogo' alt="LinkSphere logo" />
             <h1>LoginComponent</h1>
             <div className="auth-inputs">
                 <input
