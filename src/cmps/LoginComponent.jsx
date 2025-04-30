@@ -1,28 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react'
+import { LoginApi } from '../api/AuthApi'
 import '../Sass/LoginComponent.scss'
-import { LoginApi } from '../api/AuthApi';
 
 export default function LoginComponent() {
+    const [credentials, setCredentials] = useState({})
 
-    const login = () => {
-        let res = LoginApi()
-        console.log(res)
+    const handleChange = (ev) => {
+        const { name, value } = ev.target
+        setCredentials((prev) => ({ ...prev, [name]: value }))
     }
+
+    const login = async () => {
+        try {         
+            let res = await LoginApi(credentials.email, credentials.password)
+            console.log('res', res)
+        } catch (err) {
+            console.log('err:', err)
+        }
+    }
+
     return (
         <div className="login-wrapper">
             <h1>LoginComponent</h1>
             <div className="auth-inputs">
                 <input
-                    onChange={(e) =>
-                        setCredentials((prev) => ({ ...prev, email: e.target.value }))
-                    }
+                    name="email"
+                    onChange={handleChange}
                     className="common-input"
                     placeholder="Enter your Email"
                 />
                 <input
-                    onChange={(e) =>
-                        setCredentials((prev) => ({ ...prev, password: e.target.value }))
-                    }
+                    name="password"
+                    onChange={handleChange}
                     className="common-input"
                     placeholder="Enter your Password"
                 />
@@ -31,4 +40,3 @@ export default function LoginComponent() {
         </div>
     )
 }
-
