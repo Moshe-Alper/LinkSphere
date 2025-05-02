@@ -1,11 +1,27 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IE+Guides&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  
-  color: black;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
   background-color: whitesmoke;
+  line-height: 1.4;
+  font-family: 'Roboto', sans-serif;
+ 
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex-grow: 2;
+  padding: 1rem;
 }
