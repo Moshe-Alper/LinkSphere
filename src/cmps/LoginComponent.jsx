@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { LoginApi } from "../api/AuthApi"
 import LinkSphereLogo from "../assets/logo.png"
+import GoogleButton from 'react-google-button'
+
 import "../Sass/LoginComponent.scss"
 
 export default function LoginComponent() {
@@ -12,7 +14,7 @@ export default function LoginComponent() {
     }
 
     const login = async () => {
-        try {         
+        try {
             let res = await LoginApi(credentials.email, credentials.password)
             console.log(res.user)
         } catch (err) {
@@ -41,7 +43,17 @@ export default function LoginComponent() {
                     type="password"
                 />
             </div>
-            <button onClick={login} className="signin-btn">Sign in</button>
+            <div className="actions">
+                <button onClick={login} className="signin-btn">Sign in</button>
+                <hr className="hr-text" data-content="or"></hr>
+                <div className="google-btn" style={{ width: '300px' }}>
+                    <GoogleButton
+                        onClick={() => { console.log('Google button clicked') }}
+                        style={{ width: '100%' }}
+                    />
+                </div>
+                <p className="go-to-signup">New to LoginSphere? <span className="join-now">Join now</span></p>
+            </div>
         </div>
     )
 }

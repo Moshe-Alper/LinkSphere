@@ -1,3 +1,6 @@
+$color-btn: rgb(9, 4, 40);
+$color1: rgb(61, 41, 184);
+
 .login-wrapper {
     display: flex;
     flex-direction: column;
@@ -18,7 +21,7 @@
         font-weight: 500;
         margin-block-start: 80px;
     }
-    
+
     p {
         font-weight: 200;
         margin-block-end: 10px;
@@ -28,7 +31,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        margin-bottom: 20px;
+        margin-block-end: 20px;
 
         .common-input {
             width: 300px;
@@ -46,24 +49,82 @@
         }
     }
 
-    .signin-btn {
-        width: 160px;
-        height: 45px;
-        cursor: pointer;
-        background-color: black;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        transition: background-color 0.3s, transform 0.2s;
+    .actions {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        .signin-btn {
+            width: 300px;
+            height: 45px;
+            cursor: pointer;
+            background-color: $color-btn;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            justify-self: center;
 
-        &:hover {
-            background-color: #333;
-            transform: scale(1.05);
+            &:hover {
+                background-color: #333;
+                transform: scale(1.05);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+    }
+
+    .hr-text {
+        line-height: 1em;
+        position: relative;
+        outline: 0;
+        border: 0;
+        color: black;
+        text-align: center;
+        height: 1.5em;
+        opacity: .5;
+
+
+        &:before {
+            content: '';
+            // use the linear-gradient for the fading effect
+            // use a solid background color for a solid bar
+            background: linear-gradient(to right, transparent, #818078, transparent);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
         }
 
-        &:active {
-            transform: scale(0.95);
+        &:after {
+            content: attr(data-content);
+            position: relative;
+            display: inline-block;
+            color: black;
+
+            padding: 0 .5em;
+            line-height: 1.5em;
+            // this is really the only tricky part, you need to specify the background color of the container element...
+            color: #818078;
+            background-color: #fcfcfa;
         }
+    }
+
+    .google-btn {
+        margin-block-end: 20px;
+    }
+
+    .go-to-signup {
+        font-size: 18px;
+
+        .join-now {
+            color: $color1;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
     }
 }
