@@ -1,7 +1,10 @@
+
 import React, { useState } from "react"
 import { LoginApi } from "../api/AuthApi"
 import LinkSphereLogo from "../assets/logo.png"
 import GoogleButton from 'react-google-button'
+import { toast } from 'react-toastify'
+
 
 import "../Sass/LoginComponent.scss"
 
@@ -16,9 +19,9 @@ export default function LoginComponent() {
     const login = async () => {
         try {
             let res = await LoginApi(credentials.email, credentials.password)
-            console.log(res.user)
+            toast.success("Signed in to LinkSphere")
         } catch (err) {
-            console.log("err:", err)
+            toast.error("Please Check you Credentials")
         }
     }
 
