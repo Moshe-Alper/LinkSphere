@@ -4,11 +4,11 @@ import { LoginApi, GoogleSignInApi } from "../api/AuthApi"
 import LinkSphereLogo from "../assets/logo.png"
 import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify'
-
-
 import "../Sass/LoginComponent.scss"
+import { useNavigate } from "react-router-dom"
 
 export default function LoginComponent() {
+    let navigate = useNavigate()
     const [credentials, setCredentials] = useState({})
 
     const handleChange = (ev) => {
@@ -59,7 +59,10 @@ export default function LoginComponent() {
                         style={{ width: '100%' }}
                     />
                 </div>
-                <p className="go-to-signup">New to LoginSphere? <span className="join-now">Join now</span></p>
+                <p className="go-to-signup">New to LoginSphere?
+                    <span className="join-now"
+                        onClick={() => navigate('/register')
+                        }>Join now</span></p>
             </div>
         </div>
     )
