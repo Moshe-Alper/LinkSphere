@@ -1,6 +1,6 @@
 
 import React, { useState } from "react"
-import { LoginApi } from "../api/AuthApi"
+import { LoginApi, GoogleSignInApi } from "../api/AuthApi"
 import LinkSphereLogo from "../assets/logo.png"
 import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify'
@@ -23,6 +23,10 @@ export default function LoginComponent() {
         } catch (err) {
             toast.error("Please Check you Credentials")
         }
+    }
+
+    const googleSignIn = () => {
+        let response = GoogleSignInApi()
     }
 
     return (
@@ -51,7 +55,7 @@ export default function LoginComponent() {
                 <hr className="hr-text" data-content="or"></hr>
                 <div className="google-btn" style={{ width: '300px' }}>
                     <GoogleButton
-                        onClick={() => { console.log('Google button clicked') }}
+                        onClick={googleSignIn}
                         style={{ width: '100%' }}
                     />
                 </div>
