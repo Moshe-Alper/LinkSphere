@@ -62,7 +62,7 @@ export default function LoginComponent() {
                 <p className="go-to-signup">New to LoginSphere?
                     <span className="join-now"
                         onClick={() => navigate('/register')
-                        }>Join now</span></p>
+                        }> Join now</span></p>
             </div>
         </div>
     )
