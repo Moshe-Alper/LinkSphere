@@ -15,18 +15,19 @@ export default function LoginComponent() {
         const { name, value } = ev.target
         setCredentials((prev) => ({ ...prev, [name]: value }))
     }
-
     const login = async () => {
         try {
             let res = await LoginApi(credentials.email, credentials.password)
             toast.success("Signed in to LinkSphere")
+            navigate("/home") 
         } catch (err) {
-            toast.error("Please Check you Credentials")
+            toast.error("Please Check your Credentials")
         }
     }
 
     const googleSignIn = () => {
         let response = GoogleSignInApi()
+        navigate("/home") 
     }
 
     return (
