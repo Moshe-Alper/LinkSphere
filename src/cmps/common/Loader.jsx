@@ -1,6 +1,4 @@
 import { Flex, Spin } from 'antd';
-import "./common.css"
-
 
 export function Loader() {
     return (
