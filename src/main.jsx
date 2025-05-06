@@ -6,7 +6,7 @@ import { app } from './firebaseConfig'
 import { ToastContainer } from 'react-toastify';
 
 
-import './index.css'
+import './index.scss'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

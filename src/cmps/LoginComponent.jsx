@@ -60,7 +60,7 @@ export default function LoginComponent() {
                         style={{ width: '100%' }}
                     />
                 </div>
-                <p className="go-to-signup">New to LoginSphere?
+                <p className="go-to-signup">New to LinkSphere?
                     <span className="join-now"
                         onClick={() => navigate('/register')
                         }> Join now</span></p>

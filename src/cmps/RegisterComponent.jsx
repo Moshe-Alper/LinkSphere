@@ -59,7 +59,7 @@ export default function RegisterComponent() {
                         style={{ width: '100%' }}
                     />
                 </div>
-                <p className="go-to-signup">Already on RegisterSphere?
+                <p className="go-to-signup">Already on LinkSphere?
                     <span className="join-now"
                         onClick={() => navigate('/')
                         }> Sign in</span></p>
