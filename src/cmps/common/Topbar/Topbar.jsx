@@ -1,7 +1,8 @@
-import './Topbar.css';
-import LinkSphereLogo from '../../../assets/logo.png'
-import { AiOutlineBell, AiOutlineHome, AiOutlineMessage, AiOutlineSearch, AiOutlineUserSwitch } from 'react-icons/ai';
-import { BsBriefcase } from 'react-icons/bs';
+import "./Topbar.css";
+import LinkSphereLogo from "../../../assets/logo.png"
+import { AiOutlineBell, AiOutlineHome, AiOutlineMessage, AiOutlineSearch, AiOutlineUserSwitch } from "react-icons/ai";
+import { BsBriefcase } from "react-icons/bs";
+import user from "../../../assets/user.png"
 
 
 export function Topbar() {
@@ -17,6 +18,8 @@ export function Topbar() {
             <AiOutlineBell size={30} className="react-icon" />
 
             </nav>
+            <img src={user} className="user-img" alt="LinkSphere User" />
+
         </section>
     )
 }

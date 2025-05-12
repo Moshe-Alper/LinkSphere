@@ -12,6 +12,13 @@
 
     }
 
+    .user-img {
+        width: 30px;
+        position: absolute;
+        right: 30px;
+        cursor: pointer;
+    }
+
     .nav-bar {
         width: 50%;
         display: flex;
