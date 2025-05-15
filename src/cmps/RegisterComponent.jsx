@@ -1,6 +1,6 @@
 
 import React, { useState } from "react"
-import { RegisterApi, GoogleSignInApi } from "../api/AuthApi"
+import { RegisterApi, GoogleSignInApi } from "../api/AuthAPI"
 import LinkSphereLogo from "../assets/logo.png"
 import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify'

@@ -2,8 +2,7 @@ import React from 'react';
 import { Button, Modal } from 'antd';
 import "./ModalComponent.scss"
 
-const ModalComponent = ({ modalOpen, setModalOpen, setStatus, status }) => {
-
+const ModalComponent = ({ modalOpen, setModalOpen, setStatus, status, sendStatus }) => {
 
   return (
     <>
@@ -15,7 +14,12 @@ const ModalComponent = ({ modalOpen, setModalOpen, setStatus, status }) => {
         onOk={() => setModalOpen(false)}
         onCancel={() => setModalOpen(false)}
         footer={[
-          <Button key="submit" type="primary" disabled={status.length > 0 ? false : true}>
+          <Button
+            onClick={sendStatus}
+            key="submit"
+            type="primary"
+            disabled={status.length > 0 ? false : true}
+          >
             Post
           </Button>
         ]}
@@ -24,10 +28,10 @@ const ModalComponent = ({ modalOpen, setModalOpen, setStatus, status }) => {
         <input
           className="modal-input"
           type="text"
-          placeholder="What do you want to talk about" 
+          placeholder="What do you want to talk about"
           onChange={(event) => setStatus(event.target.value)}
           value={status}
-          />
+        />
       </Modal>
     </>
   );
