@@ -19,6 +19,7 @@ export default function LoginComponent() {
         try {
             let res = await LoginApi(credentials.email, credentials.password)
             toast.success("Signed in to LinkSphere")
+            localStorage.setItem('userEmail', res.user.email)
             navigate("/home") 
         } catch (err) {
             toast.error("Please Check your Credentials")

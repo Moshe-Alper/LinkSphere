@@ -1,18 +1,26 @@
 import { useState, useMemo } from "react"
 import { postStatus, getStatus } from "../../../api/FirestoreAPI"
 import ModalComponent from "../Modal/ModalComponent"
-import "./PostUpdate.css"
 import { PostsCard } from "../PostsCard/PostsCard"
+import { getCurrentTimestamp } from "../../../helpers/useMoment"
+import "./PostUpdate.css"
 
 export function PostStatus() {
+    let userEmail = localStorage.getItem('userEmail')
     const [modalOpen, setModalOpen] = useState(false)
     const [status, setStatus] = useState('')
     const [allStatuses, setAllStatuses] = useState([])
 
     const sendStatus = async () => {
-        await postStatus(status)
-        setModalOpen(false)
-        setStatus('')
+        let object = {
+            status: status,
+            timestamp: getCurrentTimestamp("LLL"),
+            userEmail: userEmail
+        }
+
+        await postStatus(object)
+        await setModalOpen(false)
+        await setStatus('')
     }
 
     useMemo(() => {

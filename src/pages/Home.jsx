@@ -9,7 +9,6 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(true)
     let navigate = useNavigate()
 
-
     useEffect(() => {
         onAuthStateChanged(auth, (res) => {
             if (!res?.accessToken) {

@@ -1,11 +1,26 @@
 .posts-card {
     width: 550px;
-    height: 120px;
+    min-height: auto;
     background-color: rgb(236, 234, 234);
     margin-block-start: 30px;
     border: 1px solid #b7b7b7;
     border-radius: 7px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding-block-end: 20px;
+    
+    .timestamp {
+        font-size: 12px;
+        color: rgba (0, 0, 0, 0.6);
+        font-weight: 400;
+        margin: 10px 0 0 10px;
+    }
+
+    .status {
+        text-align: left;
+        margin: 10px 0 0 10px;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba (0, 0, 0, 0.9)
+    }
 }
