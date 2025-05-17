@@ -4,4 +4,30 @@
     background-color: white;
     margin: 30px;
     border-radius: 5px;
+    padding: 20px;
+    color: rgba(0, 0, 0, 0.9);
+
+    .actions {
+        display: flex;
+        justify-content: end;
+
+        .edit-btn {
+            cursor: pointer;
+            color: white;
+            padding: 4px 10px;
+            outline: none;
+            border: none;
+            background-color: grey;
+        }
+
+    }
+
+    .user-name {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .user-email {
+        font-size: 16px;
+    }
 }
