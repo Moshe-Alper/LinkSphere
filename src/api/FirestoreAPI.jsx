@@ -41,7 +41,8 @@ export const getCurrentUser = (setCurrentUser) => {
             response.docs
                 .map((docs) => {
                     return { ...docs.data(), userId: docs.id }
-                }).filter((item) => {
+                })
+                .filter((item) => {
                     return item.email === currEmail
                 })[0]
         )
