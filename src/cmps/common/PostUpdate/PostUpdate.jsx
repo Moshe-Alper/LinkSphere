@@ -16,7 +16,7 @@ export function PostStatus({ currentUser }) {
         let object = {
             status: status,
             timestamp: getCurrentTimestamp("LLL"),
-            userEmail: userEmail,
+            userEmail: currentUser.email,
             userName: currentUser.name,
             postID: getUniqueID(),
         }
