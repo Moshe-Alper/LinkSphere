@@ -1,6 +1,7 @@
 
 import React, { useState } from "react"
 import { RegisterApi, GoogleSignInApi } from "../api/AuthAPI"
+import { postUserData } from "../api/FirestoreAPI"
 import LinkSphereLogo from "../assets/logo.png"
 import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify'
@@ -20,6 +21,10 @@ export default function RegisterComponent() {
         try {
             let res = await RegisterApi(credentials.email, credentials.password)
             toast.success("Account Created")
+            postUserData({
+                name: credentials.name,
+                email: credentials.email
+            })
             navigate('/home')
             localStorage.setItem('userEmail', res.user.email)
         } catch (err) {
@@ -36,6 +41,14 @@ export default function RegisterComponent() {
             <img src={LinkSphereLogo} className="logo" alt="LinkSphere logo" />
             <h1>Make the most of your professional life</h1>
             <div className="auth-inputs">
+                <input
+                    name="name"
+                    onChange={handleChange}
+                    className="common-input"
+                    placeholder="Your name"
+                    type="text"
+                />
+
                 <input
                     name="email"
                     onChange={handleChange}

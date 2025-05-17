@@ -2,7 +2,8 @@ import { firestore } from "../firebaseConfig"
 import { addDoc, collection, onSnapshot } from "firebase/firestore"
 import { toast } from "react-toastify"
 
-let dbRef = collection(firestore, 'posts')
+let dbRef = collection(firestore, "posts")
+let userRef = collection(firestore, "users")
 
 export const postStatus = async (object) => {
     addDoc(dbRef, object)
@@ -22,3 +23,14 @@ onSnapshot(dbRef, (response) => {
     }))
 })
 }
+
+export const postUserData = (object) => {
+    addDoc(userRef, object)
+        .then(() => { 
+            
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+}
+
