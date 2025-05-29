@@ -4,35 +4,38 @@
     background-color: rgba(255, 255, 255, 0.87);
     display: flex;
     align-items: center;
+    position: relative;
 
     .logo {
         width: 50px;
         margin-inline-start: 10px;
-        margin-inline-end: 30px;
-
-    }
-
-    .user-img {
-        width: 30px;
-        position: absolute;
-        right: 30px;
-        cursor: pointer;
+        flex-shrink: 0;
     }
 
     .nav-bar {
-        width: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         display: flex;
         align-items: center;
-        margin-inline-end: 10px;
-        justify-content: space-between;
+        gap: 40px;
 
         .react-icon {
             cursor: pointer;
             color: #5e5e53;
+            transition: color 0.2s ease;
 
             &:hover {
                 color: #2b2a2a;
             }
         }
+    }
+
+    .user-img {
+        width: 30px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-inline-end: 30px;
+        flex-shrink: 0;
     }
 }

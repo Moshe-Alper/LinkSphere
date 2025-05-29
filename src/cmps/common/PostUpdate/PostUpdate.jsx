@@ -7,7 +7,7 @@ import { getUniqueID } from "../../../helpers/getUniqueId"
 import "./PostUpdate.css"
 
 export function PostStatus({ currentUser }) {
-     let userEmail = localStorage.getItem('userEmail')
+    let userEmail = localStorage.getItem('userEmail')
     const [modalOpen, setModalOpen] = useState(false)
     const [status, setStatus] = useState('')
     const [allStatuses, setAllStatuses] = useState([])
