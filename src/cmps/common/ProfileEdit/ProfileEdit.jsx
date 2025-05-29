@@ -12,7 +12,7 @@ export function ProfileEdit({ onEdit, currentUser }) {
     }
 
     const updateProfileData = async () => {
-        await editProfile(currentUser?.userId, editInputs)
+        await editProfile(currentUser?.userID, editInputs)
         await onEdit()
     }
 

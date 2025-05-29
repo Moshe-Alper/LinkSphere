@@ -1,12 +1,12 @@
 import { firestore } from "../firebaseConfig"
-import { addDoc, collection, doc, onSnapshot, updateDoc } from "firebase/firestore"
+import { addDoc, collection, doc, onSnapshot, query, updateDoc, where } from "firebase/firestore"
 import { toast } from "react-toastify"
 
-let dbRef = collection(firestore, "posts")
+let postsRef = collection(firestore, "posts")
 let userRef = collection(firestore, "users")
 
 export const postStatus = async (object) => {
-    addDoc(dbRef, object)
+    addDoc(postsRef, object)
         .then(() => {
             toast.success("Post has been added successfully")
         })
@@ -16,11 +16,33 @@ export const postStatus = async (object) => {
 }
 
 export const getStatus = (setAllStatuses) => {
-    onSnapshot(dbRef, (response) => {
+    onSnapshot(postsRef, (response) => {
         setAllStatuses(
             response.docs.map((docs) => {
                 return { ...docs.data(), id: docs.id }
             }))
+    })
+}
+
+export const getSingleStatus = (setAllStatuses, id) => {
+    const singlePostQuery = query(postsRef, where("userID", "==", id))
+    onSnapshot(singlePostQuery, (response) => {
+        setAllStatuses(
+            response.docs.map((docs) => {
+                return { ...docs.data(), id: docs.id}
+            })
+        )
+    })
+}
+
+export const getSingleUser = (setCurrentUser, email) => {
+    const singleUserQuery = query(userRef, where("email", "==", email))
+    onSnapshot(singleUserQuery, (response) => {
+        setCurrentUser(
+            response.docs.map((docs) => {
+                return { ...docs.data(), id: docs.id }
+            })[0]
+        )
     })
 }
 
@@ -40,7 +62,7 @@ export const getCurrentUser = (setCurrentUser) => {
         setCurrentUser(
             response.docs
                 .map((docs) => {
-                    return { ...docs.data(), userId: docs.id }
+                    return { ...docs.data(), userID: docs.id }
                 })
                 .filter((item) => {
                     return item.email === currEmail
@@ -49,8 +71,8 @@ export const getCurrentUser = (setCurrentUser) => {
     })
 }
 
-export const editProfile = (userId, payLoad) => {
-    let userToEdit = doc(userRef, userId)
+export const editProfile = (userID, payLoad) => {
+    let userToEdit = doc(userRef, userID)
     updateDoc(userToEdit, payLoad)
         .then(() => {
             toast.success("Profile has been updated successfully")

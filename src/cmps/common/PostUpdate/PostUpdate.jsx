@@ -11,7 +11,7 @@ export function PostStatus({ currentUser }) {
     const [modalOpen, setModalOpen] = useState(false)
     const [status, setStatus] = useState('')
     const [allStatuses, setAllStatuses] = useState([])
-
+    
     const sendStatus = async () => {
         let object = {
             status: status,
@@ -19,6 +19,7 @@ export function PostStatus({ currentUser }) {
             userEmail: currentUser.email,
             userName: currentUser.name,
             postID: getUniqueID(),
+            userID: currentUser.userID
         }
 
         await postStatus(object)

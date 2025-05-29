@@ -1,52 +1,76 @@
-import { useState, useMemo } from "react";
-import { ProfileEdit } from "../ProfileEdit/ProfileEdit";
-import { PostsCard } from "../PostsCard/PostsCard";
-import "./ProfileCard.css";
-import { getStatus } from "../../../api/FirestoreAPI";
+import { useState, useEffect, useMemo } from "react"
+import { ProfileEdit } from "../ProfileEdit/ProfileEdit"
+import { PostsCard } from "../PostsCard/PostsCard"
+import "./ProfileCard.css"
+import { getSingleStatus, getSingleUser, getStatus } from "../../../api/FirestoreAPI"
+import { useLocation } from "react-router-dom"
 
 export function ProfileCard({ currentUser, onEdit }) {
+  let routerLocation = useLocation()
+
   const [allStatuses, setAllStatuses] = useState([])
+  const [currentProfile, setCurrentProfile] = useState({})
 
-      useMemo(() => {
-          getStatus(setAllStatuses)
-      }, [])
+  useEffect(() => {
+    if (routerLocation?.state?.id) {
+      getSingleStatus(setAllStatuses, routerLocation?.state?.id)
+    }
+    if (routerLocation?.state?.email) {
+      getSingleUser(setCurrentProfile, routerLocation?.state?.email)
+    }
+  }, [routerLocation])
 
-  const { name, email, headline, location, college, company } = currentUser
+  // Check if currentProfile is the currentUser
+  const isCurrentUserProfile = useMemo(() => {
+    if (!currentProfile || Object.keys(currentProfile).length === 0) return true
+    return currentProfile.email === currentUser.email
+  }, [currentProfile, currentUser])
+
+  // Helper function to get value from currentProfile or fallback to currentUser
+  const getProfileValue = (key) => {
+    return Object.values(currentProfile).length === 0
+      ? currentUser[key]
+      : currentProfile?.[key]
+  }
+
+  const name = getProfileValue("name")
+  const headline = getProfileValue("headline")
+  const location = getProfileValue("location")
+  const college = getProfileValue("college")
+  const company = getProfileValue("company")
 
   return (
-    <>
-      <div className="profile-card">
-        <div className="actions">
+  <>
+    <div className="profile-card">
+      <div className="actions">
+        {isCurrentUserProfile && (
           <button onClick={onEdit} className="edit-btn">
             Edit
           </button>
+        )}
+      </div>
+      <div className="profile-info">
+        <div className="left">
+          <h3 className="user-name">{name}</h3>
+          {isCurrentUserProfile && headline && <p className="heading">{headline}</p>}
+          {isCurrentUserProfile && location && <p>{location}</p>}
         </div>
-        <div className="profile-info">
-          <div className="left">
-            <h3 className="user-name">{name}</h3>
-            {headline && <p className="heading">{headline}</p>}
-            {location && <p>{location}</p>}
-          </div>
-          <div className="right">
-            {college && <p>{college}</p>}
-            {company && <p>{company}</p>}
-          </div>
-        </div>
-
-        <div className="post-status-main">
-            {allStatuses
-                .filter((item) => {
-                    return item.userEmail === localStorage.getItem("userEmail")
-                })
-                .map((posts) => {
-                return (
-                    <div key={posts.id}>
-                        <PostsCard posts={posts} />
-                    </div>
-                )
-            })}
+        <div className="right">
+          {isCurrentUserProfile && college && <p>{college}</p>}
+          {isCurrentUserProfile && company && <p>{company}</p>}
         </div>
       </div>
-    </>
-  )
+
+      <div className="post-status-main">
+        {allStatuses
+          .filter((item) => item.userEmail === getProfileValue("email"))
+          .map((posts) => (
+            <div key={posts.id}>
+              <PostsCard posts={posts} />
+            </div>
+          ))}
+      </div>
+    </div>
+  </>
+)
 }
