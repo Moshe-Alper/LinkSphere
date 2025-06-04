@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from "react"
 import { ProfileEdit } from "../ProfileEdit/ProfileEdit"
 import { PostsCard } from "../PostsCard/PostsCard"
-import "./ProfileCard.css"
+import { GoPencil } from "react-icons/go"
+import "./ProfileCard.scss"
 import { getSingleStatus, getSingleUser, getStatus } from "../../../api/FirestoreAPI"
 import { useLocation } from "react-router-dom"
 
@@ -42,42 +43,72 @@ export function ProfileCard({ currentUser, onEdit }) {
 
   const name = getProfileValue("name")
   const headline = getProfileValue("headline")
-  const location = getProfileValue("location")
+  const city = getProfileValue("city")
+  const country = getProfileValue("country")
   const college = getProfileValue("college")
   const company = getProfileValue("company")
+  const website = getProfileValue("website")
+  const about = getProfileValue("aboutMe")
+  const skills = getProfileValue("skills")
     
   return (
-  <>
-    <div className="profile-card">
-      <div className="actions">
-        {isCurrentUserProfile && (
-          <button onClick={onEdit} className="edit-btn">
-            Edit
-          </button>
-        )}
-      </div>
-      <div className="profile-info">
-        <div className="left">
-          <h3 className="user-name">{name}</h3>
-          {isCurrentUserProfile && headline && <p className="heading">{headline}</p>}
-          {isCurrentUserProfile && location && <p>{location}</p>}
+    <>
+      <div className="profile-card">
+        <div className="actions">
+          {isCurrentUserProfile && (
+            <GoPencil size="24px" className="edit-icon" onClick={onEdit} />
+          )}
         </div>
-        <div className="right">
-          {isCurrentUserProfile && college && <p>{college}</p>}
-          {isCurrentUserProfile && company && <p>{company}</p>}
+        <div className="profile-info">
+          <div className="left">
+            <h3 className="user-name">{name}</h3>
+            {headline && <p className="heading">{headline}</p>}
+            {(city || country) && (
+              <p>
+                {city}
+                {city && country ? ", " : ""}
+                {country}
+              </p>
+            )}
+            {website && (
+              <p>
+                <a href={website} target="_blank" rel="noopener noreferrer">
+                  {website}
+                </a>
+              </p>
+            )}
+            {currentProfile.tag && (
+              <span className="profile-tag">{currentProfile.tag}</span>
+            )}
+            {about && (
+              <div className="about-me">
+                <p>{about}</p>
+              </div>
+            )}
+            {skills && skills.length > 0 && (
+              <div className="skills">
+                <ul>
+                  Skills: {skills}
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className="right">
+            {college && <p>{college}</p>}
+            {company && <p>{company}</p>}
+          </div>
+        </div>
+
+        <div className="post-status-main">
+          {allStatuses
+            .filter((item) => item.userEmail === getProfileValue("email"))
+            .map((posts) => (
+              <div key={posts.id}>
+                <PostsCard posts={posts} />
+              </div>
+            ))}
         </div>
       </div>
-      
-      <div className="post-status-main">
-        {allStatuses
-          .filter((item) => item.userEmail === getProfileValue("email"))
-          .map((posts) => (
-            <div key={posts.id}>
-              <PostsCard posts={posts} />
-            </div>
-          ))}
-      </div>
-    </div>
-  </> 
-)
+    </>
+  )
 }
