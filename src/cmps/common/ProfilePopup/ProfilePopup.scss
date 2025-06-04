@@ -1,0 +1,45 @@
+.popup-card {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    min-width: 160px;
+    z-index: 1000;
+    padding: 8px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+
+    .name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-block-start: 20px;
+    }
+
+    .headline {
+        font-size: 14px;
+        font-weight: 400;
+        margin-block-end: 20px;
+    }
+
+    .popup-options {
+        cursor: pointer;
+        margin: 0;
+        margin-block-start: 10px;
+    }
+
+    .common-btn {
+
+
+        &:hover {
+            background-color: whitesmoke;
+
+        }
+    }
+
+}

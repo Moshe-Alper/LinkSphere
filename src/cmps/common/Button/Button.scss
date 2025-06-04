@@ -1,0 +1,13 @@
+$color1: rgb(61, 41, 184);
+
+.common-btn {
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+    background-color: white;
+    color: $color1;
+    border: 2px solid $color1;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;;
+}
