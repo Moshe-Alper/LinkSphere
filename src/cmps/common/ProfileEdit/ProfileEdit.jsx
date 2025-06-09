@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { editProfile } from '../../../api/FirestoreAPI'
+import { IoMdClose } from "react-icons/io";
+
 import './ProfileEdit.scss'
 
 export function ProfileEdit({ onEdit, currentUser }) {
@@ -29,7 +31,7 @@ export function ProfileEdit({ onEdit, currentUser }) {
     return (
         <div className="profile-card">
             <div className="actions">
-                <button onClick={onEdit} className="edit-btn">Go back</button>
+                 <IoMdClose className="close-icon" size={24} onClick={onEdit} />
             </div>
             <div className="profile-edit-inputs">
                 <label htmlFor="edit-name">Name</label>
@@ -104,7 +106,7 @@ export function ProfileEdit({ onEdit, currentUser }) {
                     name="website"
                     value={editInputs.website}
                 />
-            <label htmlFor="edit-about">About</label>
+                <label htmlFor="edit-about">About</label>
                     <textarea
                     id="edit-aboutMe"
                     onChange={getInput}

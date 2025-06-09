@@ -88,7 +88,7 @@ export function ProfileCard({ currentUser, onEdit }) {
             {skills && skills.length > 0 && (
               <div className="skills">
                 <ul>
-                  Skills: {skills}
+                  <span>Skills:</span>: {skills}
                 </ul>
               </div>
             )}
