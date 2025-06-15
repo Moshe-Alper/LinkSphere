@@ -81,3 +81,8 @@ export const editProfile = (userID, payLoad) => {
             console.error(err)
         })
 }
+
+export const likePost = (userId, postId) => {
+    console.log('🚀 userId', userId)
+    console.log('🚀 postId', postId)
+}
