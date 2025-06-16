@@ -1,9 +1,10 @@
 import { firestore } from "../firebaseConfig"
-import { addDoc, collection, doc, onSnapshot, query, updateDoc, where } from "firebase/firestore"
+import { addDoc, collection, doc, onSnapshot, query, updateDoc, where, setDoc, deleteDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
 
 let postsRef = collection(firestore, "posts")
 let userRef = collection(firestore, "users")
+let likeRef = collection(firestore, "likes")
 
 export const postStatus = async (object) => {
     addDoc(postsRef, object)
@@ -82,7 +83,35 @@ export const editProfile = (userID, payLoad) => {
         })
 }
 
-export const likePost = (userId, postId) => {
-    console.log('🚀 userId', userId)
-    console.log('🚀 postId', postId)
+export const likePost = (userId, postId, isLiked) => {
+    try {
+    let docToLike = doc(likeRef, `${userId}_${postId}`)
+    if (isLiked) {
+        deleteDoc(docToLike)
+    } else setDoc(docToLike, { userId, postId })
+    } catch (err) {
+        console.error("err:", err)
+    }
+}
+
+export const getLikesByUser = (userId, postId, setIsLiked, setLikesCount) => {
+    if (!postId) {
+        console.error("postId is undefined");
+        return;
+    }
+    try {
+        let likeQuery = query(likeRef, where("postId", "==", postId))
+
+        onSnapshot(likeQuery, (response) => {
+            let likes = response.docs.map((doc) => doc.data())
+            let likesCount = likes?.length
+
+            const isLiked = likes.some((like) => like.userId === userId)
+            
+            setLikesCount(likesCount)
+            setIsLiked(isLiked)
+        })
+    } catch (err) {
+        console.error("err:", err)
+    }
 }
