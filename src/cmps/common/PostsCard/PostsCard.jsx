@@ -25,6 +25,7 @@ export function PostsCard({ posts}) {
             <LikeButton 
                 userId={currentUser?.userID}
                 postId={posts.id}
+                currentUser={currentUser}
               />
         </section>
     )
