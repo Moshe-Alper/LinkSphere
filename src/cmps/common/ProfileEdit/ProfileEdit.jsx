@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import './ProfileEdit.scss'
 
 export function ProfileEdit({ onEdit, currentUser }) {
+
     const [editInputs, setEditInputs] = useState({
         name: currentUser?.name || '',
         headline: currentUser?.headline || '',

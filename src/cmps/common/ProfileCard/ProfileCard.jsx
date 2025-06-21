@@ -5,12 +5,18 @@ import { GoPencil } from "react-icons/go"
 import "./ProfileCard.scss"
 import { getSingleStatus, getSingleUser, getStatus } from "../../../api/FirestoreAPI"
 import { useLocation } from "react-router-dom"
+import { uploadImage as uploadImageApi  } from "../../../api/ImageUpload"
 
 export function ProfileCard({ currentUser, onEdit }) {
   let routerLocation = useLocation()
   
   const [allStatuses, setAllStatuses] = useState([])
   const [currentProfile, setCurrentProfile] = useState({})
+  const [currentImage, setCurrentImage] = useState({})
+
+  const uploadImage = () => {
+    uploadImageApi(currentImage)
+  }
 
   useEffect(() => {
     // If there's routing state with specific user data, fetch that user's profile
@@ -50,10 +56,19 @@ export function ProfileCard({ currentUser, onEdit }) {
   const website = getProfileValue("website")
   const about = getProfileValue("aboutMe")
   const skills = getProfileValue("skills")
+
+  const getImage = (ev) => {
+    setCurrentImage(ev.target.files[0])
+  }
     
   return (
     <>
       <div className="profile-card">
+         <input 
+          type="file" 
+          onChange={getImage}
+         />
+         <button onClick={uploadImage}>Upload</button>
         <div className="actions">
           {isCurrentUserProfile && (
             <GoPencil size="24px" className="edit-icon" onClick={onEdit} />
