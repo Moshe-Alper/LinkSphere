@@ -2,7 +2,7 @@ import { storage } from "../firebaseConfig"
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage"
 import { editProfile } from "./FirestoreAPI"
 
-export const uploadImage = (file, id) => {
+export const uploadImage = (file, id, setModalOpen, setProgress, setCurrentImage) => {
     // Add validation
     if (!file) {
         console.error('No file provided for upload')
@@ -22,7 +22,7 @@ export const uploadImage = (file, id) => {
             const progress = Math.round(
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
             )
-            console.log(`Upload progress: ${progress}%`)
+           setProgress(progress)
         }, 
         (error) => {
             console.error('Upload error:', error)
@@ -30,6 +30,9 @@ export const uploadImage = (file, id) => {
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((response) => {
                 editProfile(id, { imageLink: response })
+                setModalOpen(false)
+                setCurrentImage({})
+                setProgress(0)
             }).catch((error) => {
                 console.error('Error getting download URL:', error)
             })

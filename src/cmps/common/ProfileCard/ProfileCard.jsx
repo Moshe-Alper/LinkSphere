@@ -5,6 +5,7 @@ import "./ProfileCard.scss"
 import { getSingleStatus, getSingleUser, getStatus, editProfile } from "../../../api/FirestoreAPI"
 import { useLocation } from "react-router-dom"
 import { uploadImage as uploadImageApi  } from "../../../api/ImageUpload"
+import { FileUploadModal } from "../FileUploadModal/FileUploadModal"
 
 export function ProfileCard({ currentUser, onEdit }) {
   let routerLocation = useLocation()
@@ -13,6 +14,9 @@ export function ProfileCard({ currentUser, onEdit }) {
   const [currentProfile, setCurrentProfile] = useState({})
   const [currentImage, setCurrentImage] = useState({})
   const [imageLink, setImageLink] = useState('')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [progress, setProgress] = useState(0)
+
 
   const uploadImage = () => {
     // Add validation before uploading
@@ -20,7 +24,7 @@ export function ProfileCard({ currentUser, onEdit }) {
       console.error('Missing image or user ID for upload')
       return
     }
-    uploadImageApi(currentImage, currentUser.userID)
+    uploadImageApi(currentImage, currentUser.userID, setModalOpen, setProgress, setCurrentImage)
   }
 
   useEffect(() => {
@@ -92,6 +96,14 @@ export function ProfileCard({ currentUser, onEdit }) {
 
    return (
     <>
+    <FileUploadModal 
+      modalOpen={modalOpen} 
+      setModalOpen={setModalOpen}
+      getImage={getImage}
+      uploadImage={uploadImage}
+      currentImage={currentImage}
+      progress={progress}
+      />
       <div className="profile-card">
         <div className="actions">
           {isCurrentUserProfile && (
@@ -104,6 +116,7 @@ export function ProfileCard({ currentUser, onEdit }) {
             <div className="profile-image">
               {getProfileValue("imageLink") ? (
                 <img 
+                  onClick={() => setModalOpen(true)}
                   src={getProfileValue("imageLink")} 
                   alt={`${name}'s profile`}
                   className="profile-img"
@@ -114,25 +127,6 @@ export function ProfileCard({ currentUser, onEdit }) {
                 </div>
               )}
             </div>
-            {isCurrentUserProfile && (
-              <div className="image-upload-section">
-                <input 
-                  type="file" 
-                  onChange={getImage}
-                  accept="image/*"
-                  id="image-upload"
-                  className="image-upload-input"
-                />
-                <label htmlFor="image-upload" className="upload-label">
-                  Change photo
-                </label>
-                {currentImage && (
-                  <button onClick={uploadImage} className="upload-btn">
-                    Upload
-                  </button>
-                )}
-              </div>
-            )}
           </div>
         </div>
 
