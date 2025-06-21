@@ -1,5 +1,5 @@
 .posts-card {
-    width: 550px;
+    width: 450px;
     min-height: auto;
     background-color: #fff;
     margin-block-start: 24px;
@@ -39,5 +39,8 @@
         line-height: 1.5;
     }
 
-   
+    @media (max-width: 600px) {
+        width: 100%;
+        padding: 12px 8px 8px 8px;
+    }
 }
