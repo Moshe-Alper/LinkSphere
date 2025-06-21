@@ -1,22 +1,24 @@
 .profile-card {
     max-width: 700px;
-    margin: 40px auto;
+    margin: 0 auto;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    padding: 32px 32px 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
     color: #1d2226;
     font-family: 'Segoe UI', Arial, sans-serif;
 
     .actions {
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 8px;
+        padding: 20px 32px 0 32px;
 
         .edit-icon {
             cursor: pointer;
+            padding: 8px;
             border-radius: 50%;
             transition: background 0.2s;
+            color: #666;
 
             &:hover {
                 background: #f3f6f8;
@@ -24,67 +26,162 @@
         }
     }
 
+    .profile-header {
+        padding: 0 32px 20px 32px;
+        
+        .profile-image-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 24px;
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                overflow: hidden;
+                background: #f8f9fa;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                
+                .profile-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                
+                .profile-placeholder {
+                    font-size: 40px;
+                    font-weight: 600;
+                    color: #0a66c2;
+                }
+            }
+            
+            .image-upload-section {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-top: 20px;
+                
+                .image-upload-input {
+                    display: none;
+                }
+                
+                .upload-label {
+                    cursor: pointer;
+                    background: #0a66c2;
+                    color: white;
+                    padding: 6px 12px;
+                    border-radius: 16px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    transition: background 0.2s;
+                    text-align: center;
+                    
+                    &:hover {
+                        background: #004182;
+                    }
+                }
+                
+                .upload-btn {
+                    cursor: pointer;
+                    background: #057642;
+                    color: white;
+                    padding: 6px 12px;
+                    border: none;
+                    border-radius: 16px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    transition: background 0.2s;
+                    
+                    &:hover {
+                        background: #046139;
+                    }
+                }
+            }
+        }
+    }
+
     .profile-info {
         display: flex;
         justify-content: space-between;
+        padding: 0 32px 32px 32px;
 
         .left {
             flex: 2;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
 
             .user-name {
-                font-size: 28px;
-                font-weight: 700;
-                margin: 0 0 4px 0;
-                color: #0a66c2;
+                font-size: 32px;
+                font-weight: 600;
+                margin: 0;
+                color: #1d2226;
+                line-height: 1.2;
             }
 
             .heading {
                 font-size: 18px;
-                color: #434649;
-                margin: 0 0 8px 0;
+                color: #666;
+                margin: 0;
                 line-height: 1.4;
-                width: auto;
+                font-weight: 400;
             }
 
             p, a {
                 font-size: 15px;
-                color: #434649;
-                margin: 0 0 4px 0;
+                color: #666;
+                margin: 0;
+                line-height: 1.4;
+            }
+
+            a {
+                color: #0a66c2;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
 
             .profile-tag {
                 display: inline-block;
                 background: #e7f3ff;
                 color: #0a66c2;
-                font-size: 13px;
-                font-weight: 600;
+                font-size: 12px;
+                font-weight: 500;
                 border-radius: 12px;
-                padding: 2px 10px;
-                margin-top: 6px;
+                padding: 4px 10px;
+                margin-top: 8px;
+                width: fit-content;
             }
 
             .about-me {
-                margin-top: 10px;
+                margin-top: 16px;
+                
                 p {
                     font-size: 15px;
-                    color: #434649;
+                    color: #666;
+                    line-height: 1.5;
                 }
             }
 
             .skills {
-                margin-top: 10px;
+                margin-top: 16px;
+                
                 ul {
                     list-style: none;
                     padding: 0;
                     margin: 0;
-                    font-size: 14px;
-                    color: #434649;
+                    font-size: 15px;
+                    color: #666;
 
                     span {
                         font-weight: 600;
+                        color: #1d2226;
                     }
                 }
             }
@@ -97,43 +194,75 @@
             align-items: flex-end;
             font-size: 15px;
             font-weight: 500;
-            color: #434649;
+            color: #666;
             gap: 8px;
             margin-top: 8px;
+
+            p {
+                margin: 0;
+                text-align: right;
+            }
         }
     }
 
     .post-status-main {
-        margin-top: 32px;
         border-top: 1px solid #e6e9ec;
-        padding-top: 24px;
+        padding: 24px 32px;
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d2226;
+            margin-bottom: 16px;
+        }
     }
 
-    .save-wrapper {
-        margin-top: 24px;
-        display: flex;
-        justify-content: center;
+    .loading {
+        text-align: center;
+        padding: 40px;
+        font-size: 16px;
+        color: #666;
+    }
+}
 
-        .save-btn {
-            width: 320px;
-            height: 48px;
-            cursor: pointer;
-            background: #0a66c2;
-            color: #fff;
-            border: none;
-            border-radius: 24px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
 
-            &:hover {
-                background: #004182;
-                transform: scale(1.03);
+    .profile-card {
+        margin: 0 10px;
+
+        .actions,
+        .profile-header,
+        .profile-info,
+        .post-status-main {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .profile-header .profile-image-section {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-info {
+            flex-direction: column;
+            gap: 20px;
+
+            .right {
+                align-items: flex-start;
+
+                p {
+                    text-align: left;
+                }
             }
+        }
 
-            &:active {
-                transform: scale(0.98);
-            }
+        .left .user-name {
+            font-size: 28px;
         }
     }
 }
