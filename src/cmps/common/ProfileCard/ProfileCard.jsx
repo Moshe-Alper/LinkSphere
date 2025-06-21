@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from "react"
-import { ProfileEdit } from "../ProfileEdit/ProfileEdit"
 import { PostsCard } from "../PostsCard/PostsCard"
 import { GoPencil } from "react-icons/go"
 import "./ProfileCard.scss"

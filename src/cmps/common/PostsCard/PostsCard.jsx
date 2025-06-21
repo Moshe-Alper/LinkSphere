@@ -1,5 +1,5 @@
 import { LikeButton } from '../LinkButton/LikeButton'
-import './PostsCard.css'
+import './PostsCard.scss'
 import { useNavigate } from 'react-router-dom'
 import { getCurrentUser } from '../../../api/FirestoreAPI'
 import { useMemo, useState } from 'react'
