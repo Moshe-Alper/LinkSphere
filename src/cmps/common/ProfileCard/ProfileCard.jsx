@@ -107,7 +107,7 @@ export function ProfileCard({ currentUser, onEdit }) {
       <div className="profile-card">
         <div className="actions">
           {isCurrentUserProfile && (
-            <GoPencil size="24px" className="edit-icon" onClick={onEdit} />
+            <GoPencil size="40" className="edit-icon" onClick={onEdit} />
           )}
         </div>
         

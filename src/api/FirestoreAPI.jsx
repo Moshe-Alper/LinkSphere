@@ -26,8 +26,13 @@ export const getStatus = (setAllStatuses) => {
     })
 }
 
-export const getAllUsers = () => {
-    
+export const getAllUsers = (setAllUsers) => {
+        onSnapshot(userRef, (response) => {
+        setAllUsers(
+            response.docs.map((docs) => {
+                return { ...docs.data(), id: docs.id }
+            }))
+    })
 }
 
 export const getSingleStatus = (setAllStatuses, id) => {

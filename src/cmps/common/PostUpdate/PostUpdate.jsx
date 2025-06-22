@@ -18,7 +18,7 @@ export function PostStatus({ currentUser }) {
             timestamp: getCurrentTimestamp("LLL"),
             userEmail: currentUser.email,
             userName: currentUser.name,
-            postID: getUniqueID(),
+            postID: getUniqueID(), 
             userID: currentUser.userID
         }
 
