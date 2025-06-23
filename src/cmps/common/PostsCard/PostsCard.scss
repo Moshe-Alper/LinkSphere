@@ -13,7 +13,20 @@
     .post-header {
         display: flex;
         align-items: flex-start;
+        justify-content: space-between;
         margin-bottom: 12px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: flex-start;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
     }
 
     .profile-image {
@@ -25,13 +38,7 @@
         box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         background-color: #f3f6f8;
         margin-right: 12px;
-        flex-shrink: 0; // Prevents image from shrinking
-    }
-
-    .user-info {
-        display: flex;
-        flex-direction: column;
-        min-width: 0; // Allows text to wrap properly
+        flex-shrink: 0;
     }
 
     .name {
@@ -61,6 +68,27 @@
         font-weight: 400;
         color: #222;
         line-height: 1.5;
+    }
+
+    .action-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: auto; // Pushes to the right
+
+        .action-icon {
+            margin-left: 8px;
+            color: #666;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+
+            &:hover {
+                color: #0a66c2;
+                background-color: rgba(10, 102, 194, 0.08);
+            }
+        }
     }
 
     @media (max-width: 600px) {
