@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react"
-import { postStatus, getStatus } from "../../../api/FirestoreAPI"
+import { postStatus, getStatus, updatePost } from "../../../api/FirestoreAPI"
 import ModalComponent from "../Modal/ModalComponent"
 import { PostsCard } from "../PostsCard/PostsCard"
 import { getCurrentTimestamp } from "../../../helpers/useMoment"
@@ -7,12 +7,20 @@ import { getUniqueID } from "../../../helpers/getUniqueId"
 import "./PostUpdate.css"
 
 export function PostStatus({ currentUser }) {
-    let userEmail = localStorage.getItem('userEmail')
     const [modalOpen, setModalOpen] = useState(false)
     const [status, setStatus] = useState('')
     const [allStatuses, setAllStatuses] = useState([])
+    const [currentPost, setCurrentPost] = useState(null)
+    const [isEditing, setIsEditing] = useState(false)
+
     
     const sendStatus = async () => {
+
+             if (!currentUser) {
+            console.error('Current user is not available')
+            return
+        }
+        
         let object = {
             status: status,
             timestamp: getCurrentTimestamp("LLL"),
@@ -24,17 +32,47 @@ export function PostStatus({ currentUser }) {
 
         await postStatus(object)
         await setModalOpen(false)
-        await setStatus('')
+        setIsEditing(false)
+        setCurrentPost(null) 
+        await setStatus('') 
+        getStatus(setAllStatuses)
+
+    }
+    
+    const getEditData = (posts) => {
+        setModalOpen(true)
+        setStatus(posts?.status)
+        setCurrentPost(posts)
+        setIsEditing(true)
+    }
+
+    const updateStatus = (posts) => {
+        console.log(status)
+        updatePost(currentPost.id, status)
+        setModalOpen(false)
+        setIsEditing(false)
+        setCurrentPost(null)
+        setStatus('')
+        getStatus(setAllStatuses)
     }
 
     useMemo(() => {
         getStatus(setAllStatuses)
     }, [])
 
+
     return (
         <section className="post-status-main">
             <div className="post-status">
-                <button className="open-post-modal-btn" onClick={() => setModalOpen(true)}>Start a Post</button>
+                <button
+                    className="open-post-modal-btn"
+                    onClick={() => {
+                        setModalOpen(true)
+                        setIsEditing(false)
+                    }}
+                >
+                    Start a Post
+                </button>
             </div>
             <ModalComponent
                 modalOpen={modalOpen}
@@ -42,11 +80,17 @@ export function PostStatus({ currentUser }) {
                 status={status}
                 setStatus={setStatus}
                 sendStatus={sendStatus}
+                updateStatus={updateStatus}
+                isEditing={isEditing}
             />
 
             {allStatuses.map((posts) => {
                 return (
-                    <PostsCard key={posts.id} posts={posts} />
+                    <PostsCard 
+                        key={posts.id} 
+                        posts={posts} 
+                        getEditData={getEditData}
+                    />
                 )
             })}
         </section>

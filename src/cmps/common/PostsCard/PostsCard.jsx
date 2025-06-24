@@ -5,7 +5,7 @@ import { getCurrentUser, getAllUsers } from '../../../api/FirestoreAPI'
 import { useMemo, useState } from 'react'
 import { BsPencil, BsTrash } from "react-icons/bs"
 
-export function PostsCard({ posts }) {
+export function PostsCard({ posts, getEditData  }) {
     let navigate = useNavigate()
     const [currentUser, setCurrentUser] = useState({})
     const [allUsers, setAllUsers] = useState([])
@@ -37,7 +37,7 @@ export function PostsCard({ posts }) {
                     </div>
                 </div>
                 <div className="action-container">
-                    <BsPencil size={30} className="action-icon" />
+                    <BsPencil size={30} className="action-icon" onClick={() => getEditData(posts)} />
                     <BsTrash size={30} className="action-icon" />
                 </div>
             </header>

@@ -155,3 +155,12 @@ export const getComments = (postId, setComments) => {
         console.error('Error getting comment', err)
     }
 }
+
+export const updatePost = (id, status) => {
+    let docToUpdate = doc(postsRef, id)
+    try {
+        updateDoc(docToUpdate, { status })
+    } catch (err) {
+       console.error('err:', err) 
+    }
+}
