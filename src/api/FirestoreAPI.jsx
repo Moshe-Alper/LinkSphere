@@ -160,7 +160,28 @@ export const updatePost = (id, status) => {
     let docToUpdate = doc(postsRef, id)
     try {
         updateDoc(docToUpdate, { status })
+            .then(() => {
+                toast.success("Post has been updated successfully")
+            })
+            .catch((err) => {
+                toast.error(err.message)
+            })
     } catch (err) {
-       console.error('err:', err) 
+        console.error('err:', err) 
+    }
+}
+
+export const deletePost = (id) => {
+    let docToDelete = doc(postsRef, id)
+    try {
+        deleteDoc(docToDelete)
+            .then(() => {
+                toast.success("Post has been deleted successfully")
+            })
+            .catch((err) => {
+                toast.error(err.message)
+            })
+    } catch (err) {
+        console.error(err)
     }
 }

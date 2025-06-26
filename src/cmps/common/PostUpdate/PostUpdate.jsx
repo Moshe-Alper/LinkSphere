@@ -46,8 +46,7 @@ export function PostStatus({ currentUser }) {
         setIsEditing(true)
     }
 
-    const updateStatus = (posts) => {
-        console.log(status)
+    const updateStatus = () => {
         updatePost(currentPost.id, status)
         setModalOpen(false)
         setIsEditing(false)
