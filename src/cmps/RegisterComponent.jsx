@@ -7,6 +7,7 @@ import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify'
 import "../Sass/RegisterComponent.scss"
 import { useNavigate } from "react-router-dom"
+import { getUniqueID } from "../helpers/getUniqueId"
 
 export default function RegisterComponent() {
     let navigate = useNavigate()
@@ -17,13 +18,16 @@ export default function RegisterComponent() {
         setCredentials((prev) => ({ ...prev, [name]: value }))
     }
 
+
     const register = async () => {
         try {
             let res = await RegisterApi(credentials.email, credentials.password)
             toast.success("Account Created")
             postUserData({
+                userId: getUniqueID(),
                 name: credentials.name,
-                email: credentials.email
+                email: credentials.email,
+                imageLink: '/default-user.png'
             })
             navigate('/home')
             localStorage.setItem('userEmail', res.user.email)

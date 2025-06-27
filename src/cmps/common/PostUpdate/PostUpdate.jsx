@@ -64,7 +64,7 @@ export function PostStatus({ currentUser }) {
             <div className="user-home-details">
                 <img
                     className="user-image"
-                    src={currentUser?.imageLink || "/default-user.png"}
+                    src={currentUser?.imageLink}
                     alt="user-image"
                 />
                 <p className="user-name">{currentUser?.name}</p>
@@ -73,7 +73,7 @@ export function PostStatus({ currentUser }) {
             <div className="post-status">
                 <img
                     className="post-image"
-                    src={currentUser?.imageLink || "/default-user.png"}
+                    src={currentUser?.imageLink}
                     alt="user-image"
                 />
                 <button
