@@ -18,11 +18,12 @@ export function ProfilePopup() {
         <section className="popup-card">
             <p className="name">{currentUser?.name}</p>
             <p className="headline">{currentUser?.headline}</p>
+            <ul className="popup-options">
             <Button 
+            className="common-btn"
             title="View-Profile" 
             onClick={() => navigate("/profile")}
             />
-            <ul className="popup-options">
             <Button 
             title="Logout" 
             onClick={onLogout}

@@ -29,17 +29,20 @@
 
     .popup-options {
         cursor: pointer;
-        margin: 0;
+        margin: 0 auto;
         margin-block-start: 10px;
-    }
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
     .common-btn {
-
 
         &:hover {
             background-color: whitesmoke;
 
         }
     }
+    }
+
 
 }
