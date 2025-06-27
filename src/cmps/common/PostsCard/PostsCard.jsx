@@ -33,10 +33,13 @@ export function PostsCard({ posts, getEditData  }) {
                         { state: { id: posts?.userID, email: posts.userEmail } })}>
                         {posts.userName}
                     </p>
+                    <p className="headline">
+                        {allUsers.filter((user) => user.id === posts.userID)[0]?.headline}
+                    </p>
                     <p className="timestamp">{posts.timestamp}</p>
                 </div>
             </div>
-            {currentUser.userID === posts.userID && (
+            {currentUser?.userID === posts.userID && (
                 <div className="action-container">
                     <BsPencil size={30} className="action-icon" onClick={() => getEditData(posts)} />
                     <BsTrash size={30} className="action-icon" onClick={() => deletePost(posts.id)} />

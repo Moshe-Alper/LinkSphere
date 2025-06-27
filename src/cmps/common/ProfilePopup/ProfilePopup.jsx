@@ -16,8 +16,8 @@ export function ProfilePopup() {
     if (!currentUser) return 
     return (
         <section className="popup-card">
-            <p className="name">{currentUser.name}</p>
-            <p className="headline">{currentUser.headline}</p>
+            <p className="name">{currentUser?.name}</p>
+            <p className="headline">{currentUser?.headline}</p>
             <Button 
             title="View-Profile" 
             onClick={() => navigate("/profile")}

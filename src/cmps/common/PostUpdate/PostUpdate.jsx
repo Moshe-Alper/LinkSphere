@@ -4,7 +4,7 @@ import ModalComponent from "../Modal/ModalComponent"
 import { PostsCard } from "../PostsCard/PostsCard"
 import { getCurrentTimestamp } from "../../../helpers/useMoment"
 import { getUniqueID } from "../../../helpers/getUniqueId"
-import "./PostUpdate.css"
+import "./PostUpdate.scss"
 
 export function PostStatus({ currentUser }) {
     const [modalOpen, setModalOpen] = useState(false)
@@ -24,10 +24,10 @@ export function PostStatus({ currentUser }) {
         let object = {
             status: status,
             timestamp: getCurrentTimestamp("LLL"),
-            userEmail: currentUser.email,
-            userName: currentUser.name,
+            userEmail: currentUser?.email,
+            userName: currentUser?.name,
             postID: getUniqueID(), 
-            userID: currentUser.userID
+            userID: currentUser?.userID
         }
 
         await postStatus(object)
@@ -59,10 +59,23 @@ export function PostStatus({ currentUser }) {
         getStatus(setAllStatuses)
     }, [])
 
-
     return (
         <section className="post-status-main">
+            <div className="user-home-details">
+                <img
+                    className="user-image"
+                    src={currentUser?.imageLink || "/default-user.png"}
+                    alt="user-image"
+                />
+                <p className="user-name">{currentUser?.name}</p>
+                <p className="user-headline">{currentUser?.headline}</p>
+            </div>
             <div className="post-status">
+                <img
+                    className="post-image"
+                    src={currentUser?.imageLink || "/default-user.png"}
+                    alt="user-image"
+                />
                 <button
                     className="open-post-modal-btn"
                     onClick={() => {

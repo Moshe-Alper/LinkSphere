@@ -1,0 +1,107 @@
+.post-status-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 30px;
+
+.user-home-details {
+    width: 550px;
+    max-width: 95vw;
+    background-color: #fff;
+    margin-block-start: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px; // less gap
+    padding: 40px 24px 16px 24px; // more top padding for image overlap
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative; // for absolute positioning
+
+    .user-image {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #e0e0e0;
+        background: #f3f3f3;
+        position: absolute;
+        top: -42px; // half the image height to overlap
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0; // remove margin
+        z-index: 1;
+    }
+
+    .user-name,
+    .user-headline {
+        text-align: center;
+    }
+}
+
+
+    .post-status {
+        width: 550px;
+        max-width: 95vw;
+        height: 120px;
+        background-color: rgb(236, 234, 234);
+        margin-block-start: 30px;
+        border: 1px solid #b7b7b7;
+        border-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        .post-image {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 16px;
+            border: 2px solid #e0e0e0;
+            background: #f3f3f3;
+        }
+
+        .open-post-modal-btn {
+            width: 80%;
+            height: 50px;
+            text-align: start;
+            padding: 15px;
+            color: rgba(84, 84, 84, 0.89);
+            background-color: whitesmoke;
+            outline: none;
+            border: 1px solid #b7b7b7;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s;
+
+            &:hover {
+                background-color: #dcdcdc;
+            }
+        }
+    }
+
+
+}
+
+@media (max-width: 600px) {
+    .post-status-main {
+        .post-status {
+            width: 98vw;
+            height: auto;
+            min-height: 80px;
+            padding: 10px 0;
+
+            .open-post-modal-btn {
+                width: 95%;
+                font-size: 13px;
+                padding: 10px;
+            }
+        }
+    }
+}

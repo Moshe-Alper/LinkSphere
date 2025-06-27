@@ -24,12 +24,12 @@ export function ProfileCard({ currentUser, onEdit }) {
       console.error('Missing image or user ID for upload')
       return
     }
-    uploadImageApi(currentImage, currentUser.userID, setModalOpen, setProgress, setCurrentImage)
+    uploadImageApi(currentImage, currentUser?.userID, setModalOpen, setProgress, setCurrentImage)
   }
 
   useEffect(() => {
     // Only run if currentUser exists and has required properties
-    if (!currentUser || !currentUser.userID) {
+    if (!currentUser || !currentUser?.userID) {
       return
     }
 
@@ -52,15 +52,15 @@ export function ProfileCard({ currentUser, onEdit }) {
   useEffect(() => {
     // Only run if we have both userID and imageLink
     if (currentUser?.userID && imageLink) {
-      editProfile(currentUser.userID, imageLink)
+      editProfile(currentUser?.userID, imageLink)
     }
-  }, [imageLink, currentUser?.userID]) // Add currentUser.userID to dependencies
+  }, [imageLink, currentUser?.userID]) // Add currentUser?.userID to dependencies
 
   // Check if currentProfile is the currentUser
   const isCurrentUserProfile = useMemo(() => {
     if (!currentProfile || Object.keys(currentProfile).length === 0) return true
     if (!currentUser?.email) return false
-    return currentProfile.email === currentUser.email
+    return currentProfile.email === currentUser?.email
   }, [currentProfile, currentUser])
 
   const getProfileValue = (key) => {
@@ -70,7 +70,7 @@ export function ProfileCard({ currentUser, onEdit }) {
   }
 
   // Early return if currentUser is not loaded yet
-  if (!currentUser || !currentUser.userID) {
+  if (!currentUser || !currentUser?.userID) {
     return (
       <div className="profile-card">
         <div className="loading">Loading profile...</div>
@@ -159,7 +159,7 @@ export function ProfileCard({ currentUser, onEdit }) {
             {skills && skills.length > 0 && (
               <div className="skills">
                 <ul>
-                  <span>Skills:</span>: {skills}
+                  <span>Skills:</span> {skills}
                 </ul>
               </div>
             )}
