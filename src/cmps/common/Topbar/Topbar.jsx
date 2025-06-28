@@ -44,8 +44,14 @@ export function Topbar() {
             user.name?.toLowerCase().includes(debouncedSearchInput.toLowerCase())
         )
     }
-
+ 
     const searchResults = handleSearch()
+
+    const openUser = (user) => {
+        navigate("/profile", {
+            state: { id: user.id, email: user.email }
+        })
+    }
 
     return (
         <section className="top-bar-section">
@@ -86,7 +92,11 @@ export function Topbar() {
                 <div className="search-results">
                     {searchResults.length > 0 ? (
                         searchResults.map(user => (
-                            <div key={user.id} className="search-result-item">
+                            <div 
+                                key={user.id} 
+                                className="search-result-item"
+                                onClick={() => openUser(user)}
+                            >
                                 <img src={user.imageLink || user} alt={user.name} className="result-user-img" />
                                 <span>{user.name}</span>
                             </div>
