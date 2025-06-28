@@ -1,0 +1,55 @@
+.connection-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #e6e9ec;
+    margin: auto 70px;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        margin-right: 20px;
+        object-fit: cover;
+        border: 2px solid #e6e9ec;
+    }
+
+    .info {
+        flex: 1;
+
+        .name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1d2226;
+        }
+
+        .headline {
+            font-size: 0.95rem;
+            color: #666;
+        }
+    }
+
+    .actions {
+        margin-left: 16px;
+
+        button {
+            background: #0a66c2;
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 8px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &:hover {
+                background: #004182;
+            }
+        }
+    }
+}

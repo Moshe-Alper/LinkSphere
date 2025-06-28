@@ -6,6 +6,7 @@ let postsRef = collection(firestore, "posts")
 let userRef = collection(firestore, "users")
 let likeRef = collection(firestore, "likes")
 let commentsRef = collection(firestore, "comments")
+let connectionsRef = collection(firestore, "connections")
 
 export const postStatus = async (object) => {
     addDoc(postsRef, object)
@@ -183,5 +184,37 @@ export const deletePost = (id) => {
             })
     } catch (err) {
         console.error(err)
+    }
+}
+
+export const addConnection = (userId, targetId) => {
+    if (!userId || !targetId) {
+        console.error("addConnection: userId or targetId is undefined")
+        toast.error("Failed to add connection: missing user information")
+        return
+    }
+    try {
+        let connectionsToAdd = doc(connectionsRef, `${userId}_${targetId}`)
+        setDoc(connectionsToAdd, { userId, targetId })
+        toast.success("Connection Added")
+    } catch (err) {
+        console.error("err:", err)
+    }
+}
+
+export const getConnections = (userId, targetId, setIsConnected) => {
+
+    try {
+        let connectionsQuery = query(connectionsRef, where("targetId", "==", targetId))
+
+        onSnapshot(connectionsQuery, (response) => {
+            let connections = response.docs.map((doc) => doc.data())
+
+            const isConnected = connections.some((connection) => connection.userId === userId)
+            
+            setIsConnected(isConnected)
+        })
+    } catch (err) {
+        console.error("err:", err)
     }
 }

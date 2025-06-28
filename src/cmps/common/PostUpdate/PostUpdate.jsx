@@ -13,10 +13,8 @@ export function PostStatus({ currentUser }) {
     const [currentPost, setCurrentPost] = useState(null)
     const [isEditing, setIsEditing] = useState(false)
 
-    
     const sendStatus = async () => {
-
-             if (!currentUser) {
+        if (!currentUser) {
             console.error('Current user is not available')
             return
         }
@@ -35,8 +33,10 @@ export function PostStatus({ currentUser }) {
         setIsEditing(false)
         setCurrentPost(null) 
         await setStatus('') 
-        getStatus(setAllStatuses)
-
+        getStatus((statuses) => {
+            statuses.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            setAllStatuses(statuses)
+        })
     }
     
     const getEditData = (posts) => {
@@ -52,11 +52,17 @@ export function PostStatus({ currentUser }) {
         setIsEditing(false)
         setCurrentPost(null)
         setStatus('')
-        getStatus(setAllStatuses)
+        getStatus((statuses) => {
+            statuses.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            setAllStatuses(statuses)
+        })
     }
 
     useMemo(() => {
-        getStatus(setAllStatuses)
+        getStatus((statuses) => {
+            statuses.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            setAllStatuses(statuses)
+        })
     }, [])
 
     return (

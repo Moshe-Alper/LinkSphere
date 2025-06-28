@@ -24,7 +24,6 @@ export default function RegisterComponent() {
             let res = await RegisterApi(credentials.email, credentials.password)
             toast.success("Account Created")
             postUserData({
-                userId: getUniqueID(),
                 name: credentials.name,
                 email: credentials.email,
                 imageLink: '/default-user.png'

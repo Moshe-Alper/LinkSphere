@@ -25,7 +25,7 @@ export function Topbar() {
             <nav className="nav-bar">
                 <AiOutlineSearch size={30} className="react-icon" />
                 <AiOutlineHome size={30} className="react-icon" onClick={() => goToRoute('/home')} />
-                <AiOutlineUserSwitch size={30} className="react-icon" onClick={() => goToRoute('/profile')} />
+                <AiOutlineUserSwitch size={30} className="react-icon" onClick={() => goToRoute('/connections')} />
                 <BsBriefcase size={30} className="react-icon" />
                 <AiOutlineMessage size={30} className="react-icon" />
                 <AiOutlineBell size={30} className="react-icon" />
