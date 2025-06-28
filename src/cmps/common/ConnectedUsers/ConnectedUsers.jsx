@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import "./ConnectedUsers.scss";
 import { getConnections } from "../../../api/FirestoreAPI";
-import { useState } from "react";
+import { useState } from "react"
+import { AiOutlineUsergroupAdd } from 'react-icons/ai'
 
 export function ConnectedUsers({ user, getCurrentUser, currentUser }) {
     const [isConnected, setIsConnected] = useState(false)
@@ -25,6 +26,7 @@ export function ConnectedUsers({ user, getCurrentUser, currentUser }) {
             </div>
             <div className="actions">
                 <button onClick={ev => { ev.stopPropagation(); getCurrentUser(user.id) }}>
+                    <AiOutlineUsergroupAdd size={20}/>
                     Connect
                 </button>
             </div>
