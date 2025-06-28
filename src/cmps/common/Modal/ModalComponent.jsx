@@ -13,7 +13,9 @@ const ModalComponent = ({
   isEditing,
   uploadPostImage,
   setPostImage,
-  postImage
+  postImage,
+  currentPost,
+  setCurrentPost
 }) => {
   const [showFileInput, setShowFileInput] = useState(false)
   const fileInputRef = useRef(null)
@@ -24,7 +26,6 @@ const ModalComponent = ({
       fileInputRef.current.click()
     }
   }
-
   return (
     <>
       <Modal
@@ -37,6 +38,8 @@ const ModalComponent = ({
           setShowFileInput(false)
           setPostImage("")
           setProgress(0)
+          setCurrentPost({})
+
         }}
         onCancel={() => {
           setStatus('')
@@ -44,6 +47,7 @@ const ModalComponent = ({
           setShowFileInput(false)
           setPostImage("")
           setProgress(0)
+          setCurrentPost({})
         }}
         footer={[
           <Button
@@ -64,9 +68,13 @@ const ModalComponent = ({
           rows={4}
         />
 
-        {postImage.length > 0 && (
+        {(postImage?.length > 0 || currentPost?.postImage) && (
           <img
-            src={typeof postImage === "string" ? postImage : URL.createObjectURL(postImage)}
+            src={
+              postImage
+                ? (typeof postImage === "string" ? postImage : URL.createObjectURL(postImage))
+                : currentPost?.postImage
+            }
             alt="Post"
             className="modal-post-image"
             style={{ maxWidth: "100%", marginTop: 12, borderRadius: 8 }}

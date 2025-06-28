@@ -26,7 +26,6 @@ export function PostsCard({ posts, getEditData }) {
     const userImageLink = allUsers
         .filter((item) => item.id === posts.userID)
         .map((item) => item.imageLink)[0];
-        
     return (
         <section className="posts-card">
             <header className="post-header">
@@ -55,6 +54,9 @@ export function PostsCard({ posts, getEditData }) {
                 )}
             </header>
             <p className="status">{posts.status}</p>
+            {posts.postImage && posts.postImage.trim() !== '' && (
+                <img src={posts.postImage} alt="post-image" />
+            )}
             <LikeButton
                 userId={currentUser?.userID}
                 postId={posts.id}

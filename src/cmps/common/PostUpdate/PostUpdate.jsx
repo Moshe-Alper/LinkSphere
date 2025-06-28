@@ -20,7 +20,6 @@ export function PostStatus({ currentUser }) {
             console.error('Current user is not available')
             return
         }
-        
         let object = {
             status: status,
             timestamp: getCurrentTimestamp("LLL"),
@@ -50,7 +49,7 @@ export function PostStatus({ currentUser }) {
     }
 
     const updateStatus = () => {
-        updatePost(currentPost.id, status)
+        updatePost(currentPost.id, status, postImage)
         setModalOpen(false)
         setIsEditing(false)
         setCurrentPost(null)
@@ -106,6 +105,8 @@ export function PostStatus({ currentUser }) {
                 uploadPostImage={uploadPostImage}
                 setPostImage={setPostImage}
                 postImage={postImage}
+                setCurrentPost={setCurrentPost}
+                currentPost={currentPost}
             />
 
             {allStatuses.map((posts) => {
