@@ -1,8 +1,57 @@
 .modal-input {
-    border: none;
-    background-color: white;
-    outline:  none;
-    color: black;
-    font-size: 16px;
     width: 100%;
+    min-height: 80px;
+    padding: 12px 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    color: #222;
+    font-size: 16px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+        border-color: #0a66c2;
+        background-color: #fff;
+    }
+
+    &::placeholder {
+        color: #888;
+        opacity: 1;
+    }
+
+ 
+}
+
+.upload-image-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: #f4f4f4;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    color: #0a66c2;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+
+    &:hover {
+        background: #eaf4fb;
+        border-color: #0a66c2;
+        color: #004182;
+    }
+}
+
+#pic-upload[type="file"] {
+    margin-top: 8px;
+    font-size: 15px;
+    padding: 6px 0;
+    border: none;
+    background: transparent;
+    color: #222;
 }
