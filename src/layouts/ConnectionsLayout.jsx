@@ -10,10 +10,10 @@ export function ConnectionsLayout() {
     useMemo(() => {
         getCurrentUser(setCurrentUser)
     }, [])
-
+    
     return (
         <div>
-            <Topbar />
+            <Topbar currentUser={currentUser} />
             <Connections currentUser={currentUser} />
         </div>
     )

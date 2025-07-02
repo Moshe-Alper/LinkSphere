@@ -97,7 +97,7 @@ Contributions are welcome! Please open issues or submit pull requests for improv
 
 ## 📧 Contact
 
-For questions or support, please open an issue or contact [your-email@example.com](mailto:your-email@example.com).
+For questions or support, please open an issue or contact [moshikalper@gmail.com](mailto:moshikalper@gmail.com).
 
 ---
 

@@ -92,12 +92,14 @@
         }
 
     }
-
     .user-img {
-        width: 30px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
         cursor: pointer;
-        margin-left: auto;
-        margin-inline-end: 30px;
-        flex-shrink: 0;
-    }
+        margin-inline-start: auto;
+        margin-inline-end: 24px;
+        border: 2px solid #e6e6e6;
+}
 }

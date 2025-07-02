@@ -10,7 +10,7 @@ import { SearchUsers } from "../SearchUsers/SearchUsers"
 import { getAllUsers } from "../../../api/FirestoreAPI"
 import { useEffect } from "react"
 
-export function Topbar() {
+export function Topbar({ currentUser }) {
     let navigate = useNavigate()
     const goToRoute = (route) => {
         navigate(route)
@@ -52,7 +52,7 @@ export function Topbar() {
             state: { id: user.id, email: user.email }
         })
     }
-
+    
     return (
         <section className="top-bar-section">
             <img src={LinkSphereLogo} className="logo" alt="LinkSphere logo" />
@@ -78,9 +78,9 @@ export function Topbar() {
             </div>
 
             <img
-                src={user}
+                src={currentUser.imageLink}
                 className="user-img"
-                alt="LinkSphere User"
+                alt={currentUser.name ? `${currentUser.name} - LinkSphere User` : "LinkSphere User"}
                 onClick={handleUserImgClick}
                 style={{ cursor: "pointer" }}
             />
