@@ -8,7 +8,6 @@ import { Loader } from "../cmps/common/Loader/Loader"
 export default function Home({ currentUser }) {
     const [isLoading, setIsLoading] = useState(true)
     let navigate = useNavigate()
-
     useEffect(() => {
         onAuthStateChanged(auth, (res) => {
             if (!res?.accessToken) {

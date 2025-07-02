@@ -18,8 +18,10 @@ export function PostsCard({ posts, getEditData }) {
         getAllUsers(setAllUsers)
     }, [])
     useEffect(() => {
-        getConnections(currentUser.userID, posts.userID, setIsConnected)
-    }, [currentUser.userID, posts.userID])
+        if (currentUser && currentUser.userID && posts && posts.userID) {
+            getConnections(currentUser.userID, posts.userID, setIsConnected)
+        }
+    }, [currentUser, posts])
 
     if (!(isConnected || currentUser?.userID === posts.userID)) {
         return <></>
