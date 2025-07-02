@@ -78,9 +78,9 @@ export function Topbar({ currentUser }) {
             </div>
 
             <img
-                src={currentUser.imageLink}
+                src={currentUser?.imageLink || "/default-user.png"}
                 className="user-img"
-                alt={currentUser.name ? `${currentUser.name} - LinkSphere User` : "LinkSphere User"}
+                alt={currentUser?.name ? `${currentUser.name} - LinkSphere User` : "LinkSphere User"}
                 onClick={handleUserImgClick}
                 style={{ cursor: "pointer" }}
             />
