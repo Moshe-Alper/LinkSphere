@@ -26,10 +26,15 @@ export default function LoginComponent() {
         }
     }
 
-    const googleSignIn = () => {
-        let response = GoogleSignInApi()
-        navigate("/home") 
+    const googleSignIn = async () => {
+    try {
+        let response = await GoogleSignInApi()
+        // handle response if needed
+        navigate("/home")
+    } catch (err) {
+        toast.error("Google sign-in failed")
     }
+}
 
     return (
         <div className="login-wrapper">
