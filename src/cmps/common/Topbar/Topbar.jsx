@@ -98,7 +98,7 @@ export function Topbar({ currentUser }) {
                                 onClick={() => openUser(user)}
                             >
                                 <img src={user.imageLink || user} alt={user.name} className="result-user-img" />
-                                <span>{user.name}</span>
+                                <span>{user?.name || "Unknown User"}</span>
                             </div>
                         ))
                     ) : (

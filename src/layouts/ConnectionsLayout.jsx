@@ -1,13 +1,13 @@
 import { Topbar } from "../cmps/common/Topbar/Topbar";
 import Connections from "../pages/Connections";
 import { getCurrentUser } from "../api/FirestoreAPI";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export function ConnectionsLayout() {
     const [currentUser, setCurrentUser] = useState({})
     
-    useMemo(() => {
+    useEffect(() => {
         getCurrentUser(setCurrentUser)
     }, [])
     

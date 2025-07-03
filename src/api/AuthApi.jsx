@@ -7,9 +7,9 @@ import {
 } from 'firebase/auth'
 import { auth } from '../firebaseConfig'
 
-export const LoginApi = (email, password) => {
+export const LoginApi = async (email, password) => {
     try {
-        let response = signInWithEmailAndPassword(auth, email, password)
+        let response = await signInWithEmailAndPassword(auth, email, password)
         return response
     } 
     catch (err) {
@@ -17,9 +17,9 @@ export const LoginApi = (email, password) => {
     }
 }
 
-export const RegisterApi = (email, password) => {
+export const RegisterApi = async (email, password) => {
     try {
-        let response = createUserWithEmailAndPassword(auth, email, password)
+        let response = await createUserWithEmailAndPassword(auth, email, password)
         return response
     } 
     catch (err) {
@@ -27,10 +27,10 @@ export const RegisterApi = (email, password) => {
     }
 }
 
-export const GoogleSignInApi = () => {
+export const GoogleSignInApi = async () => {
     try {
         let googleProvider = new GoogleAuthProvider()
-        let res = signInWithPopup(auth, googleProvider)
+        let res = await signInWithPopup(auth, googleProvider)
         return res
     } 
     catch (err) {

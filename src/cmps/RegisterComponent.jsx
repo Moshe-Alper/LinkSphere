@@ -34,9 +34,12 @@ export default function RegisterComponent() {
             toast.error("Cannot Create you Account", err)
         }
     }
-
-    const googleSignIn = () => {
-        let response = GoogleSignInApi()
+    const googleSignIn = async () => {
+        try {
+            let response = await GoogleSignInApi()
+        } catch (err) {
+            toast.error("Google Sign-In failed", err)
+        }
     }
 
     return (

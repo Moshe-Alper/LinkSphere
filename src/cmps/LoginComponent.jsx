@@ -22,6 +22,7 @@ export default function LoginComponent() {
             localStorage.setItem('userEmail', res.user.email)
             navigate("/home") 
         } catch (err) {
+            console.log('Error:',err)
             toast.error("Please Check your Credentials")
         }
     }
@@ -29,9 +30,9 @@ export default function LoginComponent() {
     const googleSignIn = async () => {
     try {
         let response = await GoogleSignInApi()
-        // handle response if needed
         navigate("/home")
     } catch (err) {
+        console.log('Error:',err)
         toast.error("Google sign-in failed")
     }
 }
@@ -46,8 +47,8 @@ export default function LoginComponent() {
                     name="email"
                     onChange={handleChange}
                     className="common-input"
-                    placeholder="Email or Phone"
-                    type="email"
+
+                    
                 />
                 <input
                     name="password"
