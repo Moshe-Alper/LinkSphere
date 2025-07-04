@@ -5,7 +5,8 @@ import { HomeLayout } from "../layouts/HomeLayout"
 import { ProfileLayout } from "../layouts/ProfileLayout"
 import { ConnectionsLayout } from "../layouts/ConnectionsLayout"
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
     {
       path: "/",
       element: <Login />,
@@ -26,4 +27,8 @@ export const router = createBrowserRouter([
       path: "/connections",
       element: <ConnectionsLayout />,
     },
-  ])
+  ],
+  {
+    basename: "/LinkSphere",
+  }
+)
