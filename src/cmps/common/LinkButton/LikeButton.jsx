@@ -1,6 +1,6 @@
 import './LikeButton.scss'
 import { AiFillHeart, AiOutlineHeart, AiOutlineComment} from 'react-icons/ai'
-import { likePost, getLikesByUser, postComment, getComments } from '../../../api/FirestoreAPI.jsx'
+import { likePost, getLikesByUser, postComment, getComments } from '../../../api/FirestoreAPI.js'
 import { useMemo, useState } from 'react'
 import { getCurrentTimestamp } from "../../../helpers/useMoment"
 

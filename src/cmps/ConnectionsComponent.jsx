@@ -1,5 +1,5 @@
 import './../Sass/ConnectionsComponent.scss'
-import { getAllUsers, addConnection } from '../api/FirestoreAPI.jsx'
+import { getAllUsers, addConnection } from '../api/FirestoreAPI.js'
 import { useEffect, useState } from 'react'
 import { ConnectedUsers } from './common/ConnectedUsers/ConnectedUsers'
 

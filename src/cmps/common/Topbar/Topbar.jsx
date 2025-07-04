@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { useRef, useState } from "react"
 import { ProfilePopup } from "../ProfilePopup/ProfilePopup"
 import { SearchUsers } from "../SearchUsers/SearchUsers"
-import { getAllUsers } from "../../../api/FirestoreAPI.jsx"
+import { getAllUsers } from "../../../api/FirestoreAPI.js"
 import { useEffect } from "react"
 
 export function Topbar({ currentUser }) {

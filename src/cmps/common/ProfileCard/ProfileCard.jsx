@@ -2,9 +2,9 @@ import { useState, useEffect, useMemo } from "react"
 import { PostsCard } from "../PostsCard/PostsCard"
 import { GoPencil } from "react-icons/go"
 import "./ProfileCard.scss"
-import { getSingleStatus, getSingleUser, getStatus, editProfile } from "../../../api/FirestoreAPI.jsx"
+import { getSingleStatus, getSingleUser, getStatus, editProfile } from "../../../api/FirestoreAPI.js"
 import { useLocation } from "react-router-dom"
-import { uploadImage as uploadImageApi  } from "../../../api/ImageUpload"
+import { uploadImage as uploadImageApi  } from "../../../api/ImageUpload.js"
 import { FileUploadModal } from "../FileUploadModal/FileUploadModal"
 
 export function ProfileCard({ currentUser, onEdit }) {
