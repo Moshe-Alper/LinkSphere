@@ -16,7 +16,7 @@ export const LoginApi = async (email, password) => {
         return err
     }
 }
-
+// change Api to API
 export const RegisterApi = async (email, password) => {
     try {
         let response = await createUserWithEmailAndPassword(auth, email, password)
