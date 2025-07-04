@@ -29,6 +29,6 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/LinkSphere",
+    basename: import.meta.env.DEV ? "/" : "/LinkSphere",
   }
 )
