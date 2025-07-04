@@ -1,13 +1,12 @@
 
 import React, { useState } from "react"
-import { RegisterApi, GoogleSignInApi } from "../api/AuthAPI"
+import { RegisterApi, GoogleSignInApi } from "../api/AuthApi.jsx"
 import { postUserData } from "../api/FirestoreAPI"
 import LinkSphereLogo from "../assets/logo.png"
 import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify'
 import "../Sass/RegisterComponent.scss"
 import { useNavigate } from "react-router-dom"
-import { getUniqueID } from "../helpers/getUniqueId"
 
 export default function RegisterComponent() {
     let navigate = useNavigate()
