@@ -2,7 +2,7 @@ import './LikeButton.scss'
 import { AiFillHeart, AiOutlineHeart, AiOutlineComment} from 'react-icons/ai'
 import { likePost, getLikesByUser, postComment, getComments } from '../../../api/FirestoreAPI.js'
 import { useMemo, useState } from 'react'
-import { getCurrentTimestamp } from "../../../helpers/useMoment"
+import { getCurrentTimestamp } from "../../../helpers/useMoment.js"
 
 export function LikeButton({ userId, postId, currentUser }) {
     const [likesCount, setLikesCount] = useState(0)
