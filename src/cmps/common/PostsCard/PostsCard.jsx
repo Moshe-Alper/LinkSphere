@@ -1,7 +1,7 @@
 import { LikeButton } from '../LinkButton/LikeButton'
 import './PostsCard.scss'
 import { useNavigate } from 'react-router-dom'
-import { getCurrentUser, getAllUsers, deletePost, getConnections } from '../../../api/FirestoreAPI'
+import { getCurrentUser, getAllUsers, deletePost, getConnections } from '../../../api/FirestoreAPI.jsx'
 import { useEffect, useMemo, useState } from 'react'
 import { BsPencil, BsTrash } from "react-icons/bs"
 import { Modal } from 'antd'

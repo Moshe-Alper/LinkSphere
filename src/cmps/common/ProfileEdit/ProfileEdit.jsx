@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { editProfile } from '../../../api/FirestoreAPI'
+import { editProfile } from '../../../api/FirestoreAPI.jsx'
 import { IoMdClose } from "react-icons/io";
 
 import './ProfileEdit.scss'

@@ -1,6 +1,6 @@
 import { storage } from "../firebaseConfig"
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage"
-import { editProfile } from "./FirestoreAPI"
+import { editProfile } from "./FirestoreAPI.jsx"
 
 export const uploadImage = (file, id, setModalOpen, setProgress, setCurrentImage) => {
     // Add validation

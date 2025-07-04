@@ -2,7 +2,7 @@ import "./ProfilePopup.scss"
 import { onLogout } from "../../../api/AuthAPI.jsx"
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../Button/Button';
-import {getCurrentUser } from '../../../api/FirestoreAPI'
+import {getCurrentUser } from '../../../api/FirestoreAPI.jsx'
 import { useMemo, useState } from 'react';
 
 export function ProfilePopup() {

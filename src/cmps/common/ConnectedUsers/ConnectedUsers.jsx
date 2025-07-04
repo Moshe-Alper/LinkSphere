@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./ConnectedUsers.scss";
-import { getConnections } from "../../../api/FirestoreAPI";
+import { getConnections } from "../../../api/FirestoreAPI.jsx";
 import { useState } from "react"
 import { AiOutlineUsergroupAdd } from 'react-icons/ai'
 

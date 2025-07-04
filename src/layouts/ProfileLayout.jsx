@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getCurrentUser } from "../api/FirestoreAPI"
+import { getCurrentUser } from "../api/FirestoreAPI.jsx"
 import { Topbar } from "../cmps/common/Topbar/Topbar"
 import { Profile } from "../pages/Profile"
 

@@ -1,6 +1,6 @@
 import { Topbar } from "../cmps/common/Topbar/Topbar";
 import Connections from "../pages/Connections";
-import { getCurrentUser } from "../api/FirestoreAPI";
+import { getCurrentUser } from "../api/FirestoreAPI.jsx";
 import { useEffect, useState } from "react";
 
 

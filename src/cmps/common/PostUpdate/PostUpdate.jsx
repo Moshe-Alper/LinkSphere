@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react"
-import { postStatus, getStatus, updatePost } from "../../../api/FirestoreAPI"
+import { postStatus, getStatus, updatePost } from "../../../api/FirestoreAPI.jsx"
 import ModalComponent from "../Modal/ModalComponent"
 import { PostsCard } from "../PostsCard/PostsCard"
 import { uploadPostImage } from "../../../api/ImageUpload"
