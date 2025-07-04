@@ -6,7 +6,7 @@ LinkSphere is a modern web application for seamless link management, sharing, an
 
 ## 🚀 Demo
 
-> **Live Demo:** _Coming soon!_
+> **Live Demo:** (https://moshe-alper.github.io/LinkSphere/)
 > 
 > ![Screenshot Placeholder](./public/screenshot.png)
 
