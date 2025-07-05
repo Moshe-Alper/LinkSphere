@@ -89,6 +89,15 @@ npm start
 
 ---
 
+## 🙏 Acknowledgements
+
+Special thanks to [@CybernaticoByNishant](https://www.youtube.com/@CybernaticoByNishant) for the excellent tutorial:  
+[Build a LinkedIn Clone with React & Firebase (YouTube)](https://www.youtube.com/watch?v=HimR8Xtz17U)
+
+This project was inspired and built based on that video. Huge thanks for sharing such a clear and helpful guide!
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
